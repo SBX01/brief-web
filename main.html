@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Briefing de Cliente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">Cliente Briefing</a>
+            <ul class="navbar-menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page">
+        <header class="header">
+            <div class="header-text">
+                <h1>Sistema de Briefing de Cliente</h1>
+                <p>Captura requisitos web estructurados en minutos.</p>
+            </div>
+            <button type="button">Generar brief</button>
+        </header>
+
+        <div class="layout">
+            <section class="panel">
+                <h2>Formulario de briefing</h2>
+                <p>Completa los datos del cliente y los requisitos del proyecto.</p>
+
+                <div class="section" id="section-client-identity">
+                    <div class="section-title">SECCIÓN 1 — Identidad del cliente</div>
+                    <div class="field">
+                        <label for="client-name">Nombre completo</label>
+                        <input id="client-name" type="text" placeholder="Juan Perez">
+                    </div>
+                    <div class="field">
+                        <label for="company-name">Empresa</label>
+                        <input id="company-name" type="text" placeholder="XYZ Ltd">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="cliente@ejemplo.com">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Teléfono</label>
+                        <input id="phone" type="tel" placeholder="+52 55 1234 5678">
+                    </div>
+                </div>
+
+                <div class="section" id="section-project-type">
+                    <div class="section-title">SECCIÓN 2 — Tipo de proyecto</div>
+                    <div class="field">
+                        <select>
+                            <option>Página de aterrizaje</option>
+                            <option>Comercio electrónico</option>
+                            <option>Portafolio</option>
+                            <option>Aplicación web</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section" id="section-objective">
+                    <div class="section-title">SECCIÓN 3 — Objetivo</div>
+                    <div class="field">
+                        <label for="objective">¿Qué necesita resolver la web?</label>
+                        <textarea id="objective" placeholder="Describe el objetivo principal del proyecto"></textarea>
+                    </div>
+                </div>
+
+                <div class="section" id="section-features">
+                    <div class="section-title">SECCIÓN 4 — Funcionalidades</div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox">Formulario de contacto</label>
+                        <label class="checkbox-item"><input type="checkbox">Login / usuarios</label>
+                        <label class="checkbox-item"><input type="checkbox">Pagos</label>
+                        <label class="checkbox-item"><input type="checkbox">Blog</label>
+                        <label class="checkbox-item"><input type="checkbox">Dashboard</label>
+                        <label class="checkbox-item"><input type="checkbox">API</label>
+                    </div>
+                </div>
+
+                <div class="section" id="section-design-direction">
+                    <div class="section-title">SECCIÓN 5 — Dirección de diseño</div>
+                    <div class="field">
+                        <label for="colors">Colores preferidos</label>
+                        <input id="colors" type="text" placeholder="Ej. azul oscuro, blanco, gris">
+                    </div>
+                    <div class="field">
+                        <label for="references">Referencias (URLs)</label>
+                        <textarea id="references" placeholder="https://ejemplo.com"></textarea>
+                    </div>
+                    <div class="radio-grid">
+                        <label class="radio-item"><input type="radio" name="style">Minimal</label>
+                        <label class="radio-item"><input type="radio" name="style">Corporativo</label>
+                        <label class="radio-item"><input type="radio" name="style">Creativo</label>
+                        <label class="radio-item"><input type="radio" name="style">Audaz</label>
+                    </div>
+                </div>
+
+                <div class="section" id="section-content-status">
+                    <div class="section-title">SECCIÓN 6 — Estado de contenidos</div>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox">Tiene textos</label>
+                        <label class="checkbox-item"><input type="checkbox">Tiene imágenes</label>
+                        <label class="checkbox-item"><input type="checkbox">Necesita copywriting</label>
+                    </div>
+                </div>
+
+                <div class="action-row form-action">
+                    <button type="button" id="toggle-summary" onclick="generateBrief()" class="summary-toggle">Generar resumen</button>
+                </div>
+            </section>
+
+            <aside class="panel quick-nav">
+                <h2>Acceso rápido</h2>
+                <nav>
+                    <ul class="quick-nav-list">
+                        <li><a href="#section-client-identity">Identidad cliente</a></li>
+                        <li><a href="#section-project-type">Tipo de proyecto</a></li>
+                        <li><a href="#section-objective">Objetivo</a></li>
+                        <li><a href="#section-features">Funcionalidades</a></li>
+                        <li><a href="#section-design-direction">Dirección de diseño</a></li>
+                        <li><a href="#section-content-status">Estado de contenidos</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+        <section class="panel output hidden" id="summary-section">
+            <div>
+                <h2>Resumen del brief</h2>
+                <p>Resumen ejecutivo vs detalles</p>
+            </div>
+            <div class="output-summary">
+BRIEF DEL CLIENTE
+
+Cliente: Juan Perez
+Empresa: XYZ Ltd
+
+TIPO DE PROYECTO
+Sitio de comercio electrónico
+
+OBJETIVO
+Vender productos digitales en línea
+
+FUNCIONALIDADES
+- Sistema de login
+- Pagos
+- Catálogo de productos
+
+DIRECCIÓN DE DISEÑO
+Corporativo, tema azul oscuro
+
+ESTADO DE CONTENIDOS
+Necesita redacción
+            </div>
+            <div class="action-row">
+                <button type="button" id="copy-summary">Copiar resumen</button>
+            </div>
+        </section>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
